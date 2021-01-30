@@ -1,0 +1,10 @@
+{
+	"manifest_version": 2,
+	"name": "MS_Diccionario",
+	"description": "Este es una extension de chrome para buscar el significado de las palabras de una forma rapida y comoda (actualmente en enero de 2021 en la chrome store no hay ninguna extension asi bien hecha) Hecha con la ayuda de Sebast0 (https://github.com/Sebast0) / this is a chrome extension to search the meaning of the words in an faster and comfortable way (at present in January 2021 in the chrome store ther isn't any extension like that good well done). Made with the help of Sebast0 (https://github.com/Sebast0)",
+	"version": "1.0",
+	"browser_action": {
+		"default_popup": "popup.html",
+		"default_title": "MS_Diccionario"
+	}
+} 
