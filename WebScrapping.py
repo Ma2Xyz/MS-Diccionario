@@ -1,9 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request as req, redirect, url_for, flash
 from bs4 import BeautifulSoup
-from requests import *
+from flask.helpers import flash
+import requests as request_page
 from constants import *
 
+
 app = Flask(__name__)
+
+# settings
+app.secret_key = "a"
 
 @app.route("/")
 def popup():
@@ -11,17 +16,14 @@ def popup():
 
 @app.route("/palabra", methods=["POST"])
 def busca_palabra():
-    base_url = "http://www.wordreference.com/definicion/"
-    if Flask.method == "POST":
-        Palabra = request.form["Palabra"]
+    if req.method == "POST":
+        base_url = "http://www.wordreference.com/definicion/"
+        Palabra = req.form["Palabra"]
         endpoint = url = f"{base_url}{Palabra}"
-        page_response = request.get(url, timeout=5)
+        page_response = request_page.get(url, timeout=5)
         page_content = BeautifulSoup(page_response.content, "html.parser")
-        Definiciones = page_content.find_all("li")
-        for li in Definiciones:
-            Definicion = map(lambda data: str(data.text), Definiciones)
-    return (Definicion)
+        Definiciones = page_content.find_all("ol")
+        return (Definiciones)
     
-
 if __name__ == '__main__':
     app.run(port = 3000, debug = True)
