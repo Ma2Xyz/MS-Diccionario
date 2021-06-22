@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request as req, redirect, url_for, flash
+from flask import Flask, render_template, request as req, redirect, url_for
 from bs4 import BeautifulSoup
 from flask.helpers import flash
 import requests as request_page
@@ -6,9 +6,6 @@ from constants import *
 
 
 app = Flask(__name__)
-
-# settings
-app.secret_key = "a"
 
 @app.route("/")
 def popup():
@@ -23,7 +20,7 @@ def busca_palabra():
         page_response = request_page.get(url, timeout=5)
         page_content = BeautifulSoup(page_response.content, "html.parser")
         Definiciones = page_content.find_all("ol")
-        return (Definiciones)
+        return (str(Definiciones))
     
 if __name__ == '__main__':
     app.run(port = 3000, debug = True)
