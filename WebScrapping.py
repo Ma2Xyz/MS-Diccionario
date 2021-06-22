@@ -23,4 +23,4 @@ def busca_palabra():
         return (str(Definiciones))
     
 if __name__ == '__main__':
-    app.run(port = 3000, debug = True)
+    app.run(port = 3000)
