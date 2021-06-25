@@ -4,7 +4,6 @@ from flask.helpers import flash
 import requests as request_page
 from constants import *
 
-
 app = Flask(__name__)
 
 @app.route("/")
@@ -23,4 +22,4 @@ def busca_palabra():
         return (str(Definiciones))
     
 if __name__ == '__main__':
-    app.run(port = 3000)
+    app.run(host="https://ms-diccionario.herokuapp.com/", port = 3000)
